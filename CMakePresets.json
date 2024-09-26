@@ -1,0 +1,94 @@
+//{
+//  "version": 6,
+//  "configurePresets": [
+//      {
+//          "name": "wesql-configure1",
+//          "hidden": false,
+//          "description": "CMake configuration for wesql-server",
+//          "binaryDir": "${sourceDir}/build",
+//          "generator": "Unix Makefiles",
+//          "cacheVariables": {
+//              "CMAKE_BUILD_TYPE": {
+//                  "type": "STRING",
+//                  "value": "Debug"
+//              },
+//              "CMAKE_C_COMPILER": {
+//                  "type": "STRING",
+//                  //"value": "/opt/rh/gcc-toolset-11/root/bin/gcc"
+//                  "value": "/usr/bin/clang"
+//              },
+//              "CMAKE_CXX_COMPILER": {
+//                  "type": "STRING",
+//                  //"value": "/opt/rh/gcc-toolset-11/root/bin/g++"
+//                  "value": "/usr/bin/clang++"
+//              },
+//              "CMAKE_INCLUDE_PATH": {
+//                  "type": "STRING",
+//                  "value":"/usr/lib64/clang/15.0.7/include/"
+//              },
+//              "WITH_ROUTER": {
+//                  "type": "BOOL",
+//                  "value": false
+//              },
+//              "WITH_FAIL_POINT": {
+//                  "type": "BOOL",
+//                  "value": false
+//              },
+//              "WITH_WESQL_TEST": {
+//                  "type": "BOOL",
+//                  "value": false
+//              },
+//              "WITH_BOOST": {
+//                  "type": "STRING",
+//                  "value": "${sourceDir}/extra/boost_1_77_0.tar.bz2"
+//              },
+//              "CMAKE_EXPORT_COMPILE_COMMANDS": {
+//                  "type": "BOOL",
+//                  "value": true
+//              }
+//          }
+//      }
+//  ]
+//}
+//
+{
+  "version": 6,
+  "configurePresets": [
+      {
+          "name": "wesql-configure",
+          "hidden": false,
+          "description": "CMake configuration for wesql-server",
+          "binaryDir": "${workspaceFolder}/build",
+          "generator": "Unix Makefiles",
+          "cacheVariables": {
+              "CMAKE_BUILD_TYPE": "Debug",
+              "CMAKE_C_COMPILER": "/opt/rh/gcc-toolset-11/root/usr/bin/gcc",
+              "CMAKE_CXX_COMPILER": "/opt/rh/gcc-toolset-11/root/usr/bin/g++",
+              "CMAKE_INCLUDE_PATH": "/opt/rh/gcc-toolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/include/",
+              "WITH_ROUTER": "false",
+              "WITH_FAIL_POINT": "true",
+              "WITH_WESQL_TEST": "true",
+              "WITH_BOOST": "${workspaceFolder}/extra/boost_1_77_0.tar.bz2",
+              "CMAKE_EXPORT_COMPILE_COMMANDS": "true"
+          }
+      }
+      // ,
+      // {
+      //     "name": "wesql-clang-configure",
+      //     "hidden": false,
+      //     "description": "CMake configuration for wesql-server",
+      //     "binaryDir": "${workspaceFolder}/clang-build",
+      //     "generator": "Unix Makefiles",
+      //     "cacheVariables": {
+      //         "CMAKE_BUILD_TYPE": "Debug",
+      //         "CMAKE_C_COMPILER": "/usr/bin/clang",
+      //         "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+      //         "WITH_ROUTER": "false",
+      //         "WITH_FAIL_POINT": "true",
+      //         "WITH_WESQL_TEST": "true",
+      //         "WITH_BOOST": "${workspaceFolder}/extra/boost_1_77_0.tar.bz2",
+      //         "CMAKE_EXPORT_COMPILE_COMMANDS": "true"
+      //     }
+      // }
+  ]
+}

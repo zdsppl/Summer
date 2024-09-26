@@ -14,6 +14,7 @@
  */
 
 #include "compaction_stats.h"
+#include <limits>
 
 namespace xengine {
 namespace storage {

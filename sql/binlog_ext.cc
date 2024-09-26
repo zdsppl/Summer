@@ -192,10 +192,10 @@ Binlog_recovery::Binlog_recovery()
 
 bool Binlog_recovery::begin() {
   // Any other 2pc storage is not supported
-  if (total_ha_2pc > 2) {
-    LogErr(ERROR_LEVEL, ER_RECOVERY_OTHER_ENGINES_NOT_SUPPORT);
-    return true;
-  }
+  //if (total_ha_2pc > 2) {
+  //  LogErr(ERROR_LEVEL, ER_RECOVERY_OTHER_ENGINES_NOT_SUPPORT);
+  //  return true;
+  //}
 
   if (gtid_state->read_gtid_executed_from_table() == -1) return true;
 

@@ -1,0 +1,186 @@
+[mysqld]
+port=4408
+server-id=2
+mysqlx-port=44080
+max_connections=16520
+
+# 额外加了这个配置，不然128/256并发下sysbench会报错，没有结果
+max_prepared_stmt_count=100000
+#default-storage-engine=SMARTENGINE
+skip-name-resolve
+# data dir
+datadir=/work_space/test/install_summer/data
+# journal dir
+innodb_log_group_home_dir=/work_space/test/install_summer/log
+
+# binlog
+log_bin=/work_space/test/install_summer/log/master-bin
+#log_bin
+log_bin_index=/work_space/test/install_summer/log/master-bin.index
+relay-log-index=/work_space/test/install_summer/log/relay-bin.index
+relay-log-info-repository=TABLE
+relay-log=/work_space/test/install_summer/log/relay-bin
+
+general_log_file=/work_space/test/install_summer/run/mysqld.log
+log-error=/work_space/test/install_summer/log/mysqld.err
+log-error-verbosity=3
+slow_query_log_file=/work_space/test/install_summer/log/mysqld-slow.log
+
+pid-file=/work_space/test/install_summer/run/mysqld.pid
+socket=/work_space/test/install_summer/run/mysqld.sock
+
+secure-file-priv=/work_space/test/install_summer/log
+
+tmpdir=/work_space/test/install_summer/tmp
+character-sets-dir=/usr/share/mysql-8.0/charsets
+
+connect-timeout=60
+skip-slave-start=OFF
+binlog_order_commits=OFF
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+binlog_row_image=FULL
+binlog-format=MIXED
+log-slave-updates=1
+
+general_log=0
+slow_query_log=1
+loose-sha256_password_auto_generate_rsa_keys=0
+loose-caching_sha2_password_auto_generate_rsa_keys=0
+
+innodb-buffer-pool-size=49392123904
+innodb_log_file_size=134217728
+max_binlog_size=134217728
+innodb_read_io_threads=8
+innodb_io_capacity=2000
+innodb_io_capacity_max=20000
+read_buffer_size=262144
+key_buffer_size=16777216
+binlog_cache_size=32768
+
+
+innodb_flush_method=O_DIRECT
+innodb_io_capacity=200
+innodb_io_capacity_max=2000
+innodb_read_io_threads=4
+innodb_doublewrite_batch_size=16
+loose_innodb_doublewrite_pages=32
+
+back_log=5285
+binlog_order_commits=ON
+caching_sha2_password_auto_generate_rsa_keys=ON
+connect_timeout=10
+default_authentication_plugin=mysql_native_password
+gtid_mode=OFF_PERMISSIVE
+host_cache_size=867
+innodb_log_buffer_size=8388608
+innodb_purge_threads=1
+innodb_read_io_threads=4
+open_files_limit=1048576
+local_infile=ON
+log_error_verbosity=2
+log_output=TABLE
+log_statements_unsafe_for_binlog=OFF
+persisted_globals_load=OFF
+read_rnd_buffer_size=524288
+relay_log_recovery=ON
+sha256_password_auto_generate_rsa_keys=ON
+slave_exec_mode=IDEMPOTENT
+slow_query_log=OFF
+sql_mode=NO_ENGINE_SUBSTITUTION
+thread_cache_size=60
+thread_stack=262144
+mysqlx=0
+
+######X-Engine begin######
+################## X-Enginge config
+loose_xengine=1
+#data  dir
+loose_xengine_datadir=/work_space/test/install_summer/data/xengine/sst
+loose_xengine_wal_dir=/work_space/test/install_summer/data/xengine/redo
+
+#memory & cache
+loose_xengine_db_write_buffer_size=20G
+loose_xengine_db_total_write_buffer_size=20G
+loose_xengine_block_cache_size=25G
+loose_xengine_row_cache_size=10G
+loose_xengine_block_size=16384
+#loose_xengine_block_size=16384
+#loose_xengine_block_size=262144
+#loose_xengine_block_size=1048576
+loose_xengine_max_total_wal_size=10M
+loose_xengine_dump_memtable_limit_size=67108864
+
+#write buffer
+#loose_xengine_write_buffer_size=256M
+#loose_xengine_write_buffer_size=512M
+#loose_xengine_write_buffer_size=128M
+loose_xengine_write_buffer_size=2M
+loose_xengine_max_write_buffer_number=1000
+loose_xengine_max_write_buffer_number_to_maintain=1000
+
+
+#data durability property
+loose_xengine_flush_log_at_trx_commit=1
+loose_xengine_enable_2pc=1
+
+#transaction pipline performance
+#default 8
+loose_xengine_batch_group_slot_array_size=5
+#loose_xengine_batch_group_slot_array_size=10
+#default 8
+loose_xengine_batch_group_max_group_size=15
+#loose_xengine_batch_group_max_group_size=25
+#default 50
+loose_xengine_batch_group_max_leader_wait_time_us=50
+
+#compaciton
+loose_xengine_min_write_buffer_number_to_merge=1
+loose_xengine_level0_file_num_compaction_trigger=64
+loose_xengine_level0_layer_num_compaction_trigger=8
+loose_xengine_level1_extents_major_compaction_trigger=1000
+loose_xengine_disable_auto_compactions=false
+loose_xengine_level2_usage_percent=70
+loose_xengine_flush_delete_percent=70
+loose_xengine_compaction_delete_percent=50
+loose_xengine_flush_delete_percent_trigger=700000
+loose_xengine_flush_delete_record_trigger=700000
+loose_xengine_scan_add_blocks_limit=100
+#loose_xengine_compression_per_level=kNoCompression:kNoCompression:kNoCompression
+#loose_xengine_compression_per_level=kZSTD:kZSTD:kZSTD
+#loose_xengine_compression_per_level=kZlibCompression:kZlibCompression:kZlibCompression
+#loose_xengine_compression_per_level=kLZ4Compression:kLZ4Compression:kLZ4Compression
+loose_xengine_base_background_compactions=4
+loose_xengine_max_background_compactions=8
+loose_xengine_max_background_flushes=4
+loose_xengine_compaction_type=1
+#loose_xengine_disable_auto_compactions=1
+
+
+######X-Engine end########
+
+#####we-sql begin####
+loose_cluster-info='172.17.0.1:13307@1'
+#####we-sql end#####
+
+#####modify params begin#####
+loose_innodb_redo_log_capacity=1G
+binlog_expire_logs_seconds=60
+#binlog-format=ROW
+max_connections=102400
+log_error_verbosity=3
+#innodb_io_capacity=2000
+innodb_io_capacity_max=1000
+innodb_write_io_threads=8
+innodb_page_cleaners=8
+innodb_log_buffer_size=33554432
+innodb_max_dirty_pages_pct=75.000000
+innodb_max_dirty_pages_pct_lwm=0.000000
+innodb-buffer-pool-size=1G
+binlog-format=row
+core-file
+#loose_xengine_row_cache_size=102
+polarx_rpc=1
+xengine_concurrent_writable_file_buffer_num=8
+
+#####modify params end#####
